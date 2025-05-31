@@ -15,38 +15,39 @@ os.makedirs(DATA_DIR, exist_ok=True)
 def fetch_and_save_data():
     all_data = []
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
-    
+
     channels = [
         {"handle": "@ChimChakMan_Official", "category": "Entertainment"},
         {"handle": "@GABEEGIRL", "category": "Entertainment"},
         {"handle": "@bokyemtv", "category": "Entertainment"},
         {"handle": "@미미미누", "category": "Entertainment"},
-        {"handle": "@15ya_egg", "category": "Entertainment"}, #5
+        {"handle": "@15ya_egg", "category": "Entertainment"},  # 5
         {"handle": "@LCK", "category": "Gaming"},
         {"handle": "@GH.S", "category": "Gaming"},
         {"handle": "@두치와뿌꾸", "category": "Gaming"},
         {"handle": "@pray94", "category": "Gaming"},
-        {"handle": "@군림보", "category": "Gaming"}, #5
+        {"handle": "@군림보", "category": "Gaming"},  # 5
         {"handle": "@이과형", "category": "Science"},
         {"handle": "@scoopknowledge", "category": "Science"},
         {"handle": "@codingapple", "category": "Science"},
         {"handle": "@ebs.science - 사이언스", "category": "Science"},
-        {"handle": "@YTNSC", "category": "Science"}, #5
+        {"handle": "@YTNSC", "category": "Science"},  # 5
         {"handle": "@miso_ara", "category": "Pet"},
         {"handle": "@Bodeumofficial", "category": "Pet"},
         {"handle": "@oneroomcat", "category": "Pet"},
         {"handle": "@meow_dad", "category": "Pet"},
-        {"handle": "@timon_sns", "category": "Pet"} #5
+        {"handle": "@timon_sns", "category": "Pet"}  # 5
     ]
 
     for channel in channels:
         handle = channel["handle"]
         category = channel["category"]
-        channel_id = get_channel_id_by_handle(handle)
+        # 🔥 JSON 경로를 지정하여 호출
+        channel_id = get_channel_id_by_handle(handle, json_path='channels/channels_with_category.json')
         if not channel_id:
-            print(f"[Warning] 채널 ID를 찾을 수 없습니다: @{handle}")
+            print(f"[Warning] 채널 ID를 찾을 수 없습니다: {handle}")
             continue
-        
+
         subscriber_count = get_channel_subscriber_count(channel_id)
         video_ids = get_latest_video_ids(channel_id, max_results=10)
 
@@ -64,7 +65,7 @@ def fetch_and_save_data():
                 "subscriber_count": subscriber_count
             }
             all_data.append(record)
-            print(f"[Info] 수집 완료: @{handle}, 영상ID: {video_id}")
+            print(f"[Info] 수집 완료: {handle}, 영상ID: {video_id}")
 
     # JSON 저장
     json_file = os.path.join(DATA_DIR, 'raw_data.json')
@@ -79,7 +80,7 @@ def fetch_and_save_data():
         df.to_csv(csv_file, mode='a', index=False, header=False)
     else:
         df.to_csv(csv_file, index=False)
-    
+
     print(f"[Info] 데이터 저장 완료: {timestamp}")
 
 if __name__ == "__main__":
@@ -88,7 +89,7 @@ if __name__ == "__main__":
         try:
             fetch_and_save_data()
             print("[Info] 다음 실행까지 대기 중... (1시간)")
-            time.sleep(3600)
+            time.sleep(3600*4)
         except Exception as e:
             print(f"[Error] 데이터 수집 중 오류 발생: {e}")
             time.sleep(60)
