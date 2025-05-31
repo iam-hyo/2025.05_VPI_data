@@ -17,26 +17,26 @@ def fetch_and_save_data():
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
     
     channels = [
-        {"handle": "침착맨", "category": "Entertainment"},
-        {"handle": "가비 걸 GABEE GIRL", "category": "Entertainment"},
-        {"handle": "보겸TV", "category": "Entertainment"},
-        {"handle": "미미미누", "category": "Entertainment"},
-        {"handle": "채널십오야", "category": "Entertainment"},
-        {"handle": "LCK", "category": "Gaming"},
-        {"handle": "계향쓰 GH'S", "category": "Gaming"},
-        {"handle": "두치와 뿌꾸", "category": "Gaming"},
-        {"handle": "프레이 TV", "category": "Gaming"},
-        {"handle": "군림보", "category": "Gaming"},
-        {"handle": "이과형", "category": "Science"},
-        {"handle": "떠먹여주는TV", "category": "Science"},
-        {"handle": "코딩애플", "category": "Science"},
-        {"handle": "EBS 컬렉션 - 사이언스", "category": "Science"},
-        {"handle": "YTN 사이언스", "category": "Science"},
-        {"handle": "미소아라TT", "category": "Pet"},
-        {"handle": "강형욱의 보듬 TV", "category": "Pet"},
-        {"handle": "고양이탐정 : 원룸사는 고양이", "category": "Pet"},
-        {"handle": "냥이아빠", "category": "Pet"},
-        {"handle": "티몬과품바 X 포켓몽GO", "category": "Pet"}
+        {"handle": "@ChimChakMan_Official", "category": "Entertainment"},
+        {"handle": "@GABEEGIRL", "category": "Entertainment"},
+        {"handle": "@bokyemtv", "category": "Entertainment"},
+        {"handle": "@미미미누", "category": "Entertainment"},
+        {"handle": "@15ya_egg", "category": "Entertainment"}, #5
+        {"handle": "@LCK", "category": "Gaming"},
+        {"handle": "@GH.S", "category": "Gaming"},
+        {"handle": "@두치와뿌꾸", "category": "Gaming"},
+        {"handle": "@pray94", "category": "Gaming"},
+        {"handle": "@군림보", "category": "Gaming"}, #5
+        {"handle": "@이과형", "category": "Science"},
+        {"handle": "@scoopknowledge", "category": "Science"},
+        {"handle": "@codingapple", "category": "Science"},
+        {"handle": "@ebs.science - 사이언스", "category": "Science"},
+        {"handle": "@YTNSC", "category": "Science"}, #5
+        {"handle": "@miso_ara", "category": "Pet"},
+        {"handle": "@Bodeumofficial", "category": "Pet"},
+        {"handle": "@oneroomcat", "category": "Pet"},
+        {"handle": "@meow_dad", "category": "Pet"},
+        {"handle": "@timon_sns", "category": "Pet"} #5
     ]
 
     for channel in channels:
