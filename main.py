@@ -3,6 +3,15 @@ import json
 import time
 import pandas as pd
 from datetime import datetime
+import logging
+
+logging.info("코드 실행 시작")
+logging.basicConfig(
+    filename="log.txt",
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s'
+)
+
 
 from youtube.get_channel_id import get_channel_id_by_handle
 from youtube.get_video_id import get_latest_video_ids
