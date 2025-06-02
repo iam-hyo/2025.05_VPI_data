@@ -52,7 +52,7 @@ def fetch_and_save_data():
         handle = channel["handle"]
         category = channel["category"]
         # 🔥 JSON 경로를 지정하여 호출
-        channel_id = get_channel_id_by_handle(handle, json_path='channels/channels_with_category.json')
+        channel_id = get_channel_id_by_handle(handle, json_path='channels/channelIds_HJ.json')
         if not channel_id:
             print(f"[Warning] 채널 ID를 찾을 수 없습니다: {handle}")
             continue
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     while True:
         try:
             fetch_and_save_data()
-            print("[Info] 다음 실행까지 대기 중... (1시간)")
+            print("[Info] 다음 실행까지 대기 중... (4시간)")
             time.sleep(3600*4)
         except Exception as e:
             print(f"[Error] 데이터 수집 중 오류 발생: {e}")

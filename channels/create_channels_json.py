@@ -24,5 +24,5 @@ data = [
 ]
 
 df = pd.DataFrame(data)
-df.to_json('channels_with_category.json', orient='records', force_ascii=False, indent=4)
-print("channels_with_category.json 파일 생성 완료!")
+df.to_json('channelIds_HJ.json', orient='records', force_ascii=False, indent=4)
+print("channelIds_HJ.json 파일 생성 완료!")
