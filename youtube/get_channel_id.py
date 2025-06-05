@@ -19,7 +19,7 @@ def get_channel_id_by_handle(handle):
 
 import json
 
-def get_channel_id_by_handle(handle, json_path='channels/channels_with_category.json'):
+def get_channel_id_by_handle(handle, json_path='channels/channelIds_HJ.json'):
     """
     로컬 JSON 파일에서 채널 핸들을 통해 채널ID를 반환합니다.
     """
