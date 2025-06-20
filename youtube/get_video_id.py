@@ -1,9 +1,11 @@
 from googleapiclient.discovery import build
-from youtube.api_key import API_KEY
+from youtube.api_key import build_youtube_with_fallback 
 
-youtube = build('youtube', 'v3', developerKey=API_KEY)
+youtube = build_youtube_with_fallback()
+# from youtube.api_key import API_KEY
+# youtube = build('youtube', 'v3', developerKey=API_KEY)
 
-def get_latest_video_ids(channel_id, max_results=3):
+def get_latest_video_ids(channel_id, max_results=10):
     request = youtube.search().list(
         part='id',
         channelId=channel_id,

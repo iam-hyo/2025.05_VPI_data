@@ -1,8 +1,10 @@
 '''
 from googleapiclient.discovery import build
-from youtube.api_key import API_KEY
+from youtube.api_key import build_youtube_with_fallback 
 
-youtube = build('youtube', 'v3', developerKey=API_KEY)
+youtube = build_youtube_with_fallback()
+# from youtube.api_key import API_KEY
+# youtube = build('youtube', 'v3', developerKey=API_KEY)
 
 def get_channel_id_by_handle(handle):
     request = youtube.search().list(
@@ -19,7 +21,7 @@ def get_channel_id_by_handle(handle):
 
 import json
 
-def get_channel_id_by_handle(handle, json_path='channels/channelIds_HJ.json'):
+def get_channel_id_by_handle(handle, json_path='channels/channelIds_V2.json'):
     """
     로컬 JSON 파일에서 채널 핸들을 통해 채널ID를 반환합니다.
     """

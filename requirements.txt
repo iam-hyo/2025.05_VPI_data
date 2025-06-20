@@ -2,4 +2,4 @@ google-api-python-client
 python-dotenv
 pandas
 matplotlib
-#pip install -r requirements.txt
+isodate
