@@ -1,8 +1,8 @@
-# youtube/get_video_id_byPlaylist.py 안에 추가
-
+# youtube/get_video_id_byPlaylist.py
 from googleapiclient.discovery import build
 from youtube.api_key import build_youtube_with_fallback
 from datetime import datetime, timedelta
+import json
 
 youtube = build_youtube_with_fallback()
 
@@ -12,8 +12,12 @@ def get_uploads_playlist_id(channel_id):
         id=channel_id
     )
     response = request.execute()
-    if response['items']:
-        return response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+
+    items = response.get('items', [])
+    if items:
+        uploads_playlist_id = response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+        return uploads_playlist_id
+    print("[DEBUG] items가 비어 있습니다. 응답 전체:\n", json.dumps(response, indent=2))
     return None
 
 def get_min_10_video_ids_recent_priority(channel_id, days=10, max_total=50):

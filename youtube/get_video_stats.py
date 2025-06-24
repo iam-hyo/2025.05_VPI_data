@@ -3,37 +3,44 @@
 from googleapiclient.discovery import build
 from youtube.api_key import build_youtube_with_fallback
 from isodate import parse_duration
+from googleapiclient.errors import HttpError
 
 youtube = build_youtube_with_fallback()
 
 def get_video_statistics_batch(video_ids):
-    """
-    영상 ID 목록을 최대 50개씩 묶어서 videos.list API로 한 번에 조회
-    반환 형식: {video_id: (view, like, comment, is_short, published_at, title)}
-    """
     results = {}
     for i in range(0, len(video_ids), 50):
         batch_ids = video_ids[i:i+50]
-        response = youtube.videos().list(
-            part='snippet,statistics,contentDetails',
-            id=','.join(batch_ids)
-        ).execute()
+        try:
+            response = youtube.videos().list(
+                part='snippet,statistics,contentDetails',
+                id=','.join(batch_ids)
+            ).execute()
 
-        for item in response.get('items', []):
-            video_id = item['id']
-            stats = item.get('statistics', {})
-            snippet = item.get('snippet', {})
-            duration = item.get('contentDetails', {}).get('duration', 'PT0S')
+            items = response.get('items', [])
+            if not items:
+                print(f"[Warning] items 응답 없음 (video_ids: {batch_ids})")
+                continue
 
-            seconds = parse_duration(duration).total_seconds()
-            is_short = seconds <= 60
+            for item in items:
+                video_id = item['id']
+                stats = item.get('statistics', {})
+                snippet = item.get('snippet', {})
+                duration = item.get('contentDetails', {}).get('duration', 'PT0S')
 
-            results[video_id] = (
-                int(stats.get('viewCount', 0)),
-                int(stats.get('likeCount', 0)),
-                int(stats.get('commentCount', 0)),
-                is_short,
-                snippet.get('publishedAt'),
-                snippet.get('title')
-            )
+                seconds = parse_duration(duration).total_seconds()
+                is_short = seconds <= 60
+
+                results[video_id] = (
+                    int(stats.get('viewCount', 0)),
+                    int(stats.get('likeCount', 0)),
+                    int(stats.get('commentCount', 0)),
+                    is_short,
+                    snippet.get('publishedAt'),
+                    snippet.get('title')
+                )
+        except HttpError as e:
+            print(f"[API 오류] videos.list 실패: {e}")
+        except Exception as e:
+            print(f"[예상 외 오류] {e}")
     return results
