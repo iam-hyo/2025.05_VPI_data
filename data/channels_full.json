@@ -219,9 +219,14 @@
     "category":"Food"
   },
   {
-    "channel_handle":"@tzuyang6145",
+    "channel_handle":"@v-tzuyang",
     "channel_id":"UCHrX2qBKBuS2aUZkvr-UdxA",
     "category":"Food"
+  },
+  {
+    "category": "Food",
+    "channel_handle": "@tzuyang6145",
+    "channel_id": "UCfpaSruWW3S4dibonKXENjA"
   },
   {
     "channel_handle":"@TryToEat",
@@ -232,6 +237,21 @@
     "channel_handle":"@GABEEGIRL",
     "channel_id":"UCoC-ZGuPCvJJrbcz9eMW8zw",
     "category":"Entertainment"
+  },
+  {
+    "category": "Entertainment",
+    "channel_handle": "@fairyjaehyung",
+    "channel_id": "UCN5XdqTDRbyjXPF5NXUqWdA"
+  },
+  {
+    "category": "Entertainment",
+    "channel_handle": "@todaysjoowoojae",
+    "channel_id": "UCw-kXdzxMdMdLNI0ZlFFbmA"
+  },
+  {
+    "category": "Entertainment",
+    "channel_handle": "@carthejungwon",
+    "channel_id": "UCA6Z6cF3orXMmdeCPUH1-NA"
   },
   {
     "channel_handle":"@15ya_egg",
@@ -317,6 +337,11 @@
     "channel_handle": "@CuriousBrainLab",
     "channel_id": "UCI3mHMt-wivlZ3LS_1KiPHQ",
     "category": "Edu"
+  },
+  {
+    "category": "Edu",
+    "channel_handle": "@Btv이동진의파이아키아",
+    "channel_id": "UCuKKkBSGK4e9fuaquWXorJg"
   },
   {
     "channel_handle": "@tylerrasch1",
