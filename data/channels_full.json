@@ -13,6 +13,11 @@
     "category":"Travel"
   },
   {
+    "category": "Travel",
+    "channel_handle": "@PaniBottle",
+    "channel_id": "UCNhofiqfw5nl-NeDJkXtPvw"
+  },
+  {
     "channel_handle":"@SindbadAdventure",
     "channel_id":"UC5grQFLfy6d1VMsgM5vu_hQ",
     "category":"Travel"
@@ -38,22 +43,22 @@
     "channel_id": "UCtybqqaTj6Nx74Azdz1KrsA"
   },
   {
-    "category": "Edu",
+    "category": "Knowledge",
     "channel_handle": "@NJT_BOOK",
     "channel_id": "UCA4ZUofyfHIk-qXlAQQV5Hg"
   },
   {
-    "category": "Edu",
+    "category": "Knowledge",
     "channel_handle": "@지식한입",
     "channel_id": "UCi9Sl8GnFdYoqEVXnojBPJw"
   },
   {
-    "category": "Edu",
+    "category": "Knowledge",
     "channel_handle": "@d아이템",
     "channel_id": "UCuh6Br1vzgo1LivYgKvno5Q"
   },
   {
-    "category": "Edu",
+    "category": "Knowledge",
     "channel_handle": "@kurzgesagt",
     "channel_id": "UCsXVk37bltHxD1rDPwtNM8Q"
   },
@@ -74,14 +79,19 @@
     "category":"Sports"
   },
   {
-    "channel_handle":"@피지컬갤러리",
+    "channel_handle":"@QWER_Band_official",
     "channel_id":"UCgD0APk2x9uBlLM0UsmhQjw",
-    "category":"Sports"
+    "category":"Music"
   },
   {
     "channel_handle":"@SPOTIMESPOTV",
     "channel_id":"UC7ieD_kIhYOw28-FWU_ISyg",
     "category":"Sports"
+  },
+  {
+    "category": "Entertainment",
+    "channel_handle": "@피지컬갤러리",
+    "channel_id": "UCdtRAcd3L_UpV4tMXCw63NQ"
   },
   {
     "channel_handle":"@AllblancTV",
@@ -94,29 +104,29 @@
     "category":"Sports"
   },
   {
-    "channel_handle":"@ebs.science - 사이언스",
+    "channel_handle":"@ebs.science",
     "channel_id":"UCiFYUP4_TI70yCkkVJAlxoA",
-    "category":"Science"
+    "category":"Knowledge"
   },
   {
     "channel_handle":"@YTNSC",
     "channel_id":"UCZdBJIbJz0P9xyFipgOj1fA",
-    "category":"Science"
+    "category":"Knowledge"
   },
   {
     "channel_handle":"@codingapple",
     "channel_id":"UCSLrpBAzr-ROVGHQ5EmxnUg",
-    "category":"Science"
+    "category":"Knowledge"
   },
   {
     "channel_handle":"@scoopknowledge",
     "channel_id":"UC5dEgOV_mGqMHXizL1drtvA",
-    "category":"Science"
+    "category":"Knowledge"
   },
   {
     "channel_handle":"@이과형",
     "channel_id":"UCj-MI9DaXgAz412O9ybQ9WA",
-    "category":"Science"
+    "category":"Knowledge"
   },
   {
     "channel_handle":"@Bodeumofficial",
@@ -201,7 +211,7 @@
   {
     "channel_handle":"@GH.S",
     "channel_id":"UCiO1cexODt2FSKOi5g0H3sg",
-    "category":"Gaming"
+    "category":"Film"
   },
   {
     "channel_handle":"@LCK",
@@ -276,27 +286,27 @@
   {
     "channel_handle":"@mocar_official",
     "channel_id":"UCd5CdYxogKBwvv1xyuxhvZA",
-    "category":"AUTO"
+    "category":"Auto & Vechicles"
   },
   {
     "channel_handle":"@mocar_official",
     "channel_id":"UCH5U89kvHrVxxS80xpoOydw",
-    "category":"AUTO"
+    "category":"Auto & Vechicles"
   },
   {
     "channel_handle":"@black-box",
     "channel_id":"UC-L6sIbZaywhoxj7fVfs1hQ",
-    "category":"AUTO"
+    "category":"Auto & Vechicles"
   },
   {
     "channel_handle":"@차의세계",
     "channel_id":"UC3khiHr1souRBk8uXV2UVDQ",
-    "category":"AUTO"
+    "category":"Auto & Vechicles"
   },
   {
     "channel_handle":"@hankooktire_global",
     "channel_id":"UCs7Jpg5NYVZbm0sofpMS9Tw",
-    "category":"AUTO"
+    "category":"Auto & Vechicles"
   },
   {
     "channel_handle": "@고재영",
@@ -314,6 +324,11 @@
     "category": "Sports"
   },
   {
+    "category": "Sports",
+    "channel_handle" : "@seokggu",
+    "channel_id": "UC8valWz_8jFnX4tMGCeC62w"
+  },
+  {
     "category" : "Sports",
     "channel_handle": "@MrRagoona88",
     "channel_id": "UCYJDUekoQz0-bo8al1diLWQ"
@@ -324,43 +339,48 @@
     "channel_id": "UCMY_lKUu8yGZaVsu_9lPIGg"
   },
   {
-    "category": "Edu",
+    "category": "Knowledge",
     "channel_handle": "@syukaworld-comics",
     "channel_id": "UCJo6G1u0e_-wS-JQn3T-zEw"
   },
   {
     "channel_handle": "@dongguk_university",
     "channel_id": "UCcKfGOfFVeoYZnv2xL5d4cQ",
-    "category": "Edu"
+    "category": "Knowledge"
   },
   {
     "channel_handle": "@CuriousBrainLab",
     "channel_id": "UCI3mHMt-wivlZ3LS_1KiPHQ",
-    "category": "Edu"
+    "category": "Knowledge"
   },
   {
-    "category": "Edu",
+    "category": "Knowledge",
+    "channel_handle": "@아이템",
+    "channel_id": "UCuh6Br1vzgo1LivYgKvno5Q"
+  },
+  {
+    "category": "Knowledge",
     "channel_handle": "@Btv이동진의파이아키아",
     "channel_id": "UCuKKkBSGK4e9fuaquWXorJg"
   },
   {
     "channel_handle": "@tylerrasch1",
     "channel_id": "UCHKDlM4UOmtEBhwDTg8lqJQ",
-    "category": "Edu"
+    "category": "Knowledge"
   },
   {
     "channel_handle": "@codingapple",
     "channel_id": "UCSLrpBAzr-ROVGHQ5EmxnUg",
-    "category": "Edu"
+    "category": "Knowledge"
   },
   {
     "channel_handle": "@Tamgu",
     "channel_id": "UCvW8norVMTLt7QN-s2pS4Bw",
-    "category": "Edu"
+    "category": "Knowledge"
   },
   {
     "channel_handle": "@oh_bucketlist",
     "channel_id": "UCc8-vc45vK1-kUFZvii7s5g",
-    "category": "Edu"
+    "category": "Knowledge"
   }
 ]
