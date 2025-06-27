@@ -8,7 +8,7 @@ import logging
 from youtube.get_video_stats import get_video_statistics_batch
 from youtube.get_video_meta import update_video_meta_if_needed
 from youtube.get_channel_subscriber import get_channel_subscriber_count
-from youtube.get_video_id_byPlaylist import get_min_10_video_ids_recent_priority
+from youtube.get_video_id_byPlaylist import get_recent_video_ids_max_50
 
 logging.basicConfig(
     filename="log.txt",
@@ -42,7 +42,7 @@ def fetch_and_save_data():
 
         subscriber_count = get_channel_subscriber_count(channel_id)
 
-        video_ids = get_min_10_video_ids_recent_priority(channel_id, days=10)
+        video_ids = get_recent_video_ids_max_50(channel_id, max_results=50)
 
         try:
             video_stats_dict = get_video_statistics_batch(video_ids)

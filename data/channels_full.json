@@ -1,11 +1,11 @@
 [
-  {"channel_handle":"@ITSUB","channel_id":"UCdUcjkyZtf-1WJyPPiETF1g","category":"tech"},
-  {"channel_handle":"@zuyoni1","channel_id":"UCB11SAf7WSN4GrCquKoOHrw","category":"tech"},
-  {"channel_handle":"@OMG_electronics","channel_id":"UCCQPdv4o4ywVZQkAMOlvFbw","category":"tech"},
+  {"channel_handle":"@ITSUB","channel_id":"UCdUcjkyZtf-1WJyPPiETF1g","category":"IT & Tech"},
+  {"channel_handle":"@zuyoni1","channel_id":"UCB11SAf7WSN4GrCquKoOHrw","category":"IT & Tech"},
+  {"channel_handle":"@OMG_electronics","channel_id":"UCCQPdv4o4ywVZQkAMOlvFbw","category":"IT & Tech"},
   {
     "channel_handle":"@techmong",
     "channel_id":"UCFX6adXoyQKxft933NB3rmA",
-    "category":"tech"
+    "category":"IT & Tech"
   },
   {
     "channel_handle":"@깡스타일리스트",
@@ -215,6 +215,11 @@
   },
   {
     "channel_handle":"@GH.S",
+    "channel_id":"UCdrBnBNLsN4_cH32HWbr9qg",
+    "category":"Film"
+  },
+  {
+    "channel_handle":"@GHS_DD",
     "channel_id":"UCiO1cexODt2FSKOi5g0H3sg",
     "category":"Film"
   },
@@ -225,7 +230,7 @@
   },
   {
     "channel_handle":"@user-pq8xn3oq9y",
-    "channel_id":"UCCjR2EbSnsVKRVeTvPjVWIA",
+    "channel_id":"UC-i2ywiuvjvpTy2zW-tXfkw",
     "category":"Food"
   },
   {
@@ -309,8 +314,8 @@
     "category":"Auto & Vechicles"
   },
   {
-    "channel_handle":"@hankooktire_global",
-    "channel_id":"UCs7Jpg5NYVZbm0sofpMS9Tw",
+    "channel_handle":"@mode1554",
+    "channel_id":"UCIUKfPFV7ji0-tXyrevsjXA",
     "category":"Auto & Vechicles"
   },
   {
