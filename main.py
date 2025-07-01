@@ -97,8 +97,8 @@ if __name__ == "__main__":
     while True:
         try:
             fetch_and_save_data()
-            print("[Info] 다음 실행까지 대기 중... (8시간)")
-            time.sleep(3600 * 8)
+            print("[Info] 다음 실행까지 대기 중... (12시간)")
+            time.sleep(3600 * 12)
         except Exception as e:
             print(f"[Error] 데이터 수집 중 오류 발생: {e}")
             time.sleep(60)
