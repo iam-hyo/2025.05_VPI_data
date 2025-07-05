@@ -29,7 +29,7 @@ def get_video_statistics_batch(video_ids):
                 duration = item.get('contentDetails', {}).get('duration', 'PT0S')
 
                 seconds = parse_duration(duration).total_seconds()
-                is_short = seconds <= 119
+                is_short = seconds <= 130
 
                 results[video_id] = (
                     int(stats.get('viewCount', 0)),

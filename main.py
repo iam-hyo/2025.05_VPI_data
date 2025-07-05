@@ -1,6 +1,5 @@
 import os
 import json
-import time
 import pandas as pd
 from datetime import datetime
 import logging
@@ -11,12 +10,12 @@ from youtube.get_channel_subscriber import get_channel_subscriber_count
 from youtube.get_video_id_byPlaylist import get_recent_video_ids_max_50
 
 logging.basicConfig(
-    filename="log.txt",
+    filename="logs/log.txt",
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s'
 )
 
-DATA_DIR = 'data'
+DATA_DIR = '/home/hjj/02_VPI_app/data'
 os.makedirs(DATA_DIR, exist_ok=True)
 
 # 채널 정보 로딩 (handle, id, category 포함)
@@ -90,15 +89,12 @@ def fetch_and_save_data():
     else:
         df.to_csv(csv_file, index=False, encoding='utf-8-sig')
 
-    print(f"[Info] 데이터 저장 완료: {timestamp}")
+    logging.info(f"데이터 저장 완료: {timestamp}")
 
 if __name__ == "__main__":
-    print("[Start] 유튜브 채널 데이터 수집 시작")
-    while True:
-        try:
-            fetch_and_save_data()
-            print("[Info] 다음 실행까지 대기 중... (12시간)")
-            time.sleep(3600 * 12)
-        except Exception as e:
-            print(f"[Error] 데이터 수집 중 오류 발생: {e}")
-            time.sleep(60)
+    try:
+        logging.info("======== 유튜브 채널 수집 실행 시작 ========")
+        fetch_and_save_data()
+        logging.info("======== 실행 완료 ========")
+    except Exception as e:
+        logging.error(f"[Fatal Error] 데이터 수집 전체 실패: {e}", exc_info=True)
