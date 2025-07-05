@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
 from youtube.api_key import build_youtube_with_fallback
-from datetime import datetime, timedelta
+from datetime import datetime
 
 youtube = build_youtube_with_fallback()
 

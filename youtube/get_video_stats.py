@@ -1,4 +1,4 @@
-# youtube/get_video_stats_batch.py
+# youtube/get_video_stats.py
 
 from googleapiclient.discovery import build
 from youtube.api_key import build_youtube_with_fallback
@@ -29,7 +29,7 @@ def get_video_statistics_batch(video_ids):
                 duration = item.get('contentDetails', {}).get('duration', 'PT0S')
 
                 seconds = parse_duration(duration).total_seconds()
-                is_short = seconds <= 130
+                is_short = seconds <= 140
 
                 results[video_id] = (
                     int(stats.get('viewCount', 0)),

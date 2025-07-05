@@ -1,3 +1,4 @@
+# youtube/get_video_meta.py
 from googleapiclient.discovery import build
 from youtube.api_key import build_youtube_with_fallback
 from isodate import parse_duration
@@ -23,7 +24,7 @@ def update_video_meta_if_needed(video_ids, video_meta):
                 snippet = item["snippet"]
                 duration = item["contentDetails"]["duration"]
                 seconds = parse_duration(duration).total_seconds()
-                is_short = seconds <= 60
+                is_short = seconds <= 140
 
                 video_meta[vid] = {
                     "title": snippet.get("title"),

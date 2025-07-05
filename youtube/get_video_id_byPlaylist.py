@@ -20,61 +20,6 @@ def get_uploads_playlist_id(channel_id):
     print("[DEBUG] items가 비어 있습니다. 응답 전체:\n", json.dumps(response, indent=2))
     return None
 
-def get_min_10_video_ids_recent_priority(channel_id, days=10, max_total=50):
-    """
-    최근 N일 이내 영상 우선 수집, 부족하면 최신 영상으로 채워서 최소 10개 반환
-    """
-    playlist_id = get_uploads_playlist_id(channel_id)
-    if not playlist_id:
-        print(f"[Error] uploads playlist ID 조회 실패: {channel_id}")
-        return []
-
-    threshold = datetime.utcnow() - timedelta(days=days)
-    video_ids_recent = []
-    video_ids_fallback = []
-
-    next_page_token = None
-    scanned = 0
-
-    while True:
-        request = youtube.playlistItems().list(
-            part='contentDetails',
-            playlistId=playlist_id,
-            maxResults=50,
-            pageToken=next_page_token
-        )
-        response = request.execute()
-        items = response.get('items', [])
-
-        for item in items:
-            video_id = item['contentDetails']['videoId']
-            published_at = item['contentDetails']['videoPublishedAt']
-            published_dt = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ")
-
-            if published_dt >= threshold:
-                video_ids_recent.append(video_id)
-            else:
-                video_ids_fallback.append(video_id)
-
-            scanned += 1
-            if scanned >= max_total:
-                break
-
-        next_page_token = response.get('nextPageToken')
-        if not next_page_token or scanned >= max_total:
-            break
-
-    # 보장: 최소 10개
-    video_ids = video_ids_recent + video_ids_fallback
-    final_ids = video_ids[:10] if len(video_ids) >= 10 else video_ids
-
-    if len(video_ids_recent) == 0:
-        print(f"[Info] 최근 {days}일 내 영상 없음 → 최신 영상으로 보충: {channel_id}")
-    elif len(video_ids_recent) < 10:
-        print(f"[Info] 최근 {days}일 내 영상 {len(video_ids_recent)}개 → 최신 영상으로 보충: {channel_id}")
-
-    return final_ids
-
 def get_recent_video_ids_max_50(channel_id, channel_handle="", max_results=50):
     """
     해당 채널의 최신 업로드 영상 ID를 최대 max_results개까지 수집
