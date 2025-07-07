@@ -3,6 +3,5 @@ python-dotenv
 pandas
 matplotlib
 isodate
-google-api-python-client
 dotenv
-isodate
+supabase

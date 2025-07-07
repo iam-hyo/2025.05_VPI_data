@@ -8,6 +8,7 @@ from youtube.get_video_stats import get_video_statistics_batch
 from youtube.get_video_meta import update_video_meta_if_needed
 from youtube.get_channel_subscriber import get_channel_subscriber_count
 from youtube.get_video_id_byPlaylist import get_recent_video_ids_max_50
+from supabase_db import upsert_video, insert_video_snapshot
 
 logging.basicConfig(
     filename="logs/log.txt",
@@ -79,6 +80,23 @@ def fetch_and_save_data():
     # 메타 저장
     with open(VIDEO_META_PATH, 'w', encoding='utf-8') as f:
         json.dump(video_meta, f, ensure_ascii=False, indent=2)
+
+    # Supabase DB 저장
+        upsert_video(
+            video_id=video_id,
+            channel_id=channel_id,
+            title=video_title,
+            published_at=published_at,
+            is_short=is_short
+        )
+        insert_video_snapshot(
+            video_id=video_id,
+            view_count=view_count,
+            like_count=like_count,
+            comment_count=comment_count,
+            subscriber_count=subscriber_count,
+            collected_at=timestamp
+        )
 
     # CSV 저장
     csv_file = os.path.join(DATA_DIR, 'processed_data_v2.csv')
