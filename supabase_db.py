@@ -20,7 +20,8 @@ def upsert_video(video_id, channel_id, title, published_at, is_short, thumbnail_
         "thumbnail_url": thumbnail_url
     }
     # 이미 있으면 무시, 없으면 삽입 (id 기준)
-    supabase.table("videos").upsert(data, on_conflict=["id"]).execute()
+    # supabase.table("videos").upsert(data, on_conflict=["id"]).execute()
+    supabase.table("videos_test").upsert(data, on_conflict=["id"]).execute()
 
 def insert_video_snapshot(video_id, view_count, like_count, comment_count, subscriber_count, collected_at=None):
     if collected_at is None:
@@ -33,4 +34,5 @@ def insert_video_snapshot(video_id, view_count, like_count, comment_count, subsc
         "comment_count": comment_count,
         "subscriber_count": subscriber_count
     }
-    supabase.table("video_snapshots").insert(data).execute() 
+    # supabase.table("video_snapshots").insert(data).execute() 
+    supabase.table("video_snapshots_test").insert(data).execute() 

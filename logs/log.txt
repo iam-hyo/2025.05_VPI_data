@@ -1,0 +1,68 @@
+2025-07-07 18:09:40,367 [INFO] ======== 유튜브 채널 수집 실행 시작 ========
+2025-07-07 18:15:21,671 [INFO] HTTP Request: POST https://supabase.com/dashboard/project/lwkcjgnxtthnueevprnw/rest/v1/videos_test?on_conflict=id "HTTP/2 405 Method Not Allowed"
+2025-07-07 18:15:21,674 [ERROR] [Fatal Error] 데이터 수집 전체 실패: {'message': 'JSON could not be generated', 'code': 405, 'hint': 'Refer to full message for details', 'details': "b''"}
+Traceback (most recent call last):
+  File "/home/hjj/.local/lib/python3.10/site-packages/postgrest/_sync/request_builder.py", line 77, in execute
+    json_obj = model_validate_json(APIErrorFromJSON, r.content)
+  File "/home/hjj/.local/lib/python3.10/site-packages/postgrest/utils.py", line 69, in model_validate_json
+    return model.model_validate_json(contents)
+  File "/home/hjj/.local/lib/python3.10/site-packages/pydantic/main.py", line 746, in model_validate_json
+    return cls.__pydantic_validator__.validate_json(
+pydantic_core._pydantic_core.ValidationError: 1 validation error for APIErrorFromJSON
+  Invalid JSON: EOF while parsing a value at line 1 column 0 [type=json_invalid, input_value=b'', input_type=bytes]
+    For further information visit https://errors.pydantic.dev/2.11/v/json_invalid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hjj/01_VPI_data/main.py", line 115, in <module>
+    fetch_and_save_data()
+  File "/home/hjj/01_VPI_data/main.py", line 85, in fetch_and_save_data
+    upsert_video(
+  File "/home/hjj/01_VPI_data/supabase_db.py", line 24, in upsert_video
+    supabase.table("videos_test").upsert(data, on_conflict=["id"]).execute()
+  File "/home/hjj/.local/lib/python3.10/site-packages/postgrest/_sync/request_builder.py", line 80, in execute
+    raise APIError(generate_default_error_message(r))
+postgrest.exceptions.APIError: {'message': 'JSON could not be generated', 'code': 405, 'hint': 'Refer to full message for details', 'details': "b''"}
+2025-07-08 13:41:12,431 [INFO] ======== 유튜브 채널 수집 실행 시작 ========
+2025-07-08 13:41:12,431 [ERROR] [Fatal Error] 데이터 수집 전체 실패: local variable 'channels' referenced before assignment
+Traceback (most recent call last):
+  File "/home/hjj/01_VPI_data/main.py", line 118, in <module>
+    fetch_and_save_data()
+  File "/home/hjj/01_VPI_data/main.py", line 39, in fetch_and_save_data
+    channels = channels[:6]
+UnboundLocalError: local variable 'channels' referenced before assignment
+2025-07-08 13:44:05,640 [INFO] ======== 유튜브 채널 수집 실행 시작 ========
+2025-07-08 13:44:05,640 [ERROR] [Fatal Error] 데이터 수집 전체 실패: local variable 'channels' referenced before assignment
+Traceback (most recent call last):
+  File "/home/hjj/01_VPI_data/main.py", line 120, in <module>
+    fetch_and_save_data()
+  File "/home/hjj/01_VPI_data/main.py", line 39, in fetch_and_save_data
+    channels = channels[:6]
+UnboundLocalError: local variable 'channels' referenced before assignment
+2025-07-08 13:47:22,881 [INFO] ======== 유튜브 채널 수집 실행 시작 ========
+2025-07-08 13:47:29,360 [INFO] HTTP Request: POST https://supabase.com/dashboard/project/lwkcjgnxtthnueevprnw/rest/v1/videos_test?on_conflict=id "HTTP/2 405 Method Not Allowed"
+2025-07-08 13:47:29,361 [ERROR] [Fatal Error] 데이터 수집 전체 실패: {'message': 'JSON could not be generated', 'code': 405, 'hint': 'Refer to full message for details', 'details': "b''"}
+Traceback (most recent call last):
+  File "/home/hjj/.local/lib/python3.10/site-packages/postgrest/_sync/request_builder.py", line 77, in execute
+    json_obj = model_validate_json(APIErrorFromJSON, r.content)
+  File "/home/hjj/.local/lib/python3.10/site-packages/postgrest/utils.py", line 69, in model_validate_json
+    return model.model_validate_json(contents)
+  File "/home/hjj/.local/lib/python3.10/site-packages/pydantic/main.py", line 746, in model_validate_json
+    return cls.__pydantic_validator__.validate_json(
+pydantic_core._pydantic_core.ValidationError: 1 validation error for APIErrorFromJSON
+  Invalid JSON: EOF while parsing a value at line 1 column 0 [type=json_invalid, input_value=b'', input_type=bytes]
+    For further information visit https://errors.pydantic.dev/2.11/v/json_invalid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hjj/01_VPI_data/main.py", line 118, in <module>
+    fetch_and_save_data()
+  File "/home/hjj/01_VPI_data/main.py", line 87, in fetch_and_save_data
+    upsert_video(
+  File "/home/hjj/01_VPI_data/supabase_db.py", line 24, in upsert_video
+    supabase.table("videos_test").upsert(data, on_conflict=["id"]).execute()
+  File "/home/hjj/.local/lib/python3.10/site-packages/postgrest/_sync/request_builder.py", line 80, in execute
+    raise APIError(generate_default_error_message(r))
+postgrest.exceptions.APIError: {'message': 'JSON could not be generated', 'code': 405, 'hint': 'Refer to full message for details', 'details': "b''"}

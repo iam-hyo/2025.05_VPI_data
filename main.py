@@ -22,6 +22,8 @@ os.makedirs(DATA_DIR, exist_ok=True)
 # 채널 정보 로딩 (handle, id, category 포함)
 with open('data/channels_full.json', encoding='utf-8-sig') as f:
     channels = json.load(f)
+    ##  TEST🧪channels 열 조작 [:6]
+    channels = channels[:6]
 
 # 비디오 메타 캐시 로딩
 VIDEO_META_PATH = os.path.join(DATA_DIR, 'video_meta.json')
@@ -42,7 +44,7 @@ def fetch_and_save_data():
 
         subscriber_count = get_channel_subscriber_count(channel_id)
 
-        video_ids = get_recent_video_ids_max_50(channel_id, max_results=50)
+        video_ids = get_recent_video_ids_max_50(channel_id, max_results=10) ##TEST🧪 10개로 임시 조정
 
         try:
             video_stats_dict = get_video_statistics_batch(video_ids)
@@ -82,32 +84,33 @@ def fetch_and_save_data():
         json.dump(video_meta, f, ensure_ascii=False, indent=2)
 
     # Supabase DB 저장
-        upsert_video(
-            video_id=video_id,
-            channel_id=channel_id,
-            title=video_title,
-            published_at=published_at,
-            is_short=is_short
-        )
-        insert_video_snapshot(
-            video_id=video_id,
-            view_count=view_count,
-            like_count=like_count,
-            comment_count=comment_count,
-            subscriber_count=subscriber_count,
-            collected_at=timestamp
-        )
+    upsert_video(
+        video_id=video_id,
+        channel_id=channel_id,
+        title=video_title,
+        published_at=published_at,
+        is_short=is_short
+    )
+    insert_video_snapshot(
+        video_id=video_id,
+        view_count=view_count,
+        like_count=like_count,
+        comment_count=comment_count,
+        subscriber_count=subscriber_count,
+        collected_at=timestamp
+    )
 
     # CSV 저장
     csv_file = os.path.join(DATA_DIR, 'processed_data_v2.csv')
     df = pd.DataFrame(all_data)
     df['video_id'] = df['video_id'].apply(lambda x: f"'{x}" if isinstance(x, str) and (x.startswith('=') or x.startswith('-')) else x)
-    if os.path.exists(csv_file):
-        df.to_csv(csv_file, mode='a', index=False, header=False, encoding='utf-8-sig')
-    else:
-        df.to_csv(csv_file, index=False, encoding='utf-8-sig')
+    # if os.path.exists(csv_file):
+    #     df.to_csv(csv_file, mode='a', index=False, header=False, encoding='utf-8-sig')
+    # else:
+    #     df.to_csv(csv_file, index=False, encoding='utf-8-sig')
 
     logging.info(f"데이터 저장 완료: {timestamp}")
+    print("실행 끝")
 
 if __name__ == "__main__":
     try:
