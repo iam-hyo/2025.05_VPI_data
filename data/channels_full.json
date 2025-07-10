@@ -72,7 +72,6 @@
     "channel_handle": "@Choosunghoon_ajossi",
     "channel_id": "UCMDHzyo0wIUjKXho-icJDjw"
   },
-
   {
     "channel_handle":"@fitvely",
     "channel_id":"UC3hRpIQ4x5niJDwjajQSVPg",
@@ -89,9 +88,9 @@
     "category":"Music"
   },
   {
-    "channel_handle":"@SPOTIMESPOTV",
-    "channel_id":"UC7ieD_kIhYOw28-FWU_ISyg",
-    "category":"Sports"
+    "category": "Knowledge",
+    "channel_handle": "@DBpia",
+    "channel_id": "UCS2wly5baSCi1pJ9WwMajxw"
   },
   {
     "category": "Entertainment",
