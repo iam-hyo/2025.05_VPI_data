@@ -56,5 +56,5 @@ def get_recent_video_ids_max_50(channel_id, channel_handle="", max_results=50):
         if not next_page_token:
             break
 
-    print(f"[Info] {channel_handle or channel_id} → 영상 {len(video_ids)}개 수집 완료")
+    print(f"[Info] {channel_handle or channel_id} → 영상 {len(video_ids)}개 수집 완료", flush=True)
     return video_ids
