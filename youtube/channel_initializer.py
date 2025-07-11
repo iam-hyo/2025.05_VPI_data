@@ -17,7 +17,7 @@ class ChannelAdmin:
         self.category = category
 
 def fetch_channel_admin_list() -> List[ChannelAdmin]:
-    response = supabase.table("channel_admin_test").select("*").execute()
+    response = supabase.table("channel_admin").select("*").execute()
     return [ChannelAdmin(row["channel_handle"], row["channel_id"], row["category"]) for row in response.data]
 
 def initialize_channels_from_admins(channel_admins: List[ChannelAdmin]):
@@ -53,7 +53,7 @@ def initialize_channels_from_admins(channel_admins: List[ChannelAdmin]):
 
     # Supabase upsert
     try:
-        supabase.table("channels_test").upsert(results, on_conflict=["id"]).execute()
+        supabase.table("channels").upsert(results, on_conflict=["id"]).execute()
     except Exception as e:
         print("🚨 채널 저장 실패:", e)
         raise e

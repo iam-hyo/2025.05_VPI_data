@@ -14,7 +14,7 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 
 def get_channel_ids_from_supabase() -> List[str]:
     """Supabase에서 channel_id 리스트 반환"""
-    response = supabase.table("channels_test").select("id").execute()
+    response = supabase.table("channels").select("id").execute()
     return [item['id'] for item in response.data]
 
 def fetch_and_store_channel_data(channel_ids: List[str]):
@@ -64,10 +64,10 @@ def fetch_and_store_channel_data(channel_ids: List[str]):
     # 트랜잭션 적용
     try:
         # snapshot insert (여러 건)
-        supabase.table("channel_snapshots_test").insert(inserts_snapshots).execute()
+        supabase.table("channel_snapshots").insert(inserts_snapshots).execute()
 
         # channel upsert
-        supabase.table("channels_test").upsert(updates_channels, on_conflict=["id"]).execute()
+        supabase.table("channels").upsert(updates_channels, on_conflict=["id"]).execute()
 
     except Exception as e:
         print("🚨 저장 중 오류 발생! 모든 데이터 저장 중단됨")

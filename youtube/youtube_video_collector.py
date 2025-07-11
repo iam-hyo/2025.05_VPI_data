@@ -82,10 +82,10 @@ def store_videos_and_snapshots(channel_id: str, videos: List[Dict]):
 
     try:
         # 영상 업서트
-        supabase.table("videos_test").upsert(video_records, on_conflict=["id"]).execute()
+        supabase.table("videos").upsert(video_records, on_conflict=["id"]).execute()
 
         # snapshot 저장
-        supabase.table("video_snapshots_test").insert(snapshot_records).execute()
+        supabase.table("video_snapshots").insert(snapshot_records).execute()
 
     except Exception as e:
         print("🚨 영상 또는 snapshot 저장 실패! 전체 작업 중단")
