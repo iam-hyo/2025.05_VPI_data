@@ -1,7 +1,7 @@
 .env
 youtube_venv/
 vpi_venv/
-
+logs/
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
