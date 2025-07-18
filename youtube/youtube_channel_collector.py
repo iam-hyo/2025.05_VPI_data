@@ -50,7 +50,7 @@ def fetch_and_store_channel_data(channel_ids: List[str]):
                 "total_view_count": int(stats.get("viewCount", 0)),
             })
 
-            # channels_test 갱신용
+            # channels 갱신용
             updates_channels.append({
                 "id": channel_id,
                 "title": snippet.get("title"),

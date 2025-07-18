@@ -23,7 +23,11 @@ def fetch_videos_from_channel(channel_id: str) -> List[Dict]:
         id=channel_id
     ).execute()
 
-    uploads_playlist_id = channel_response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+    if channel_response.get("items"):
+        uploads_playlist_id = channel_response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+    else:
+        print(f"[❌] 채널 정보를 찾을 수 없습니다: {channel_id}")
+    return []
 
     # Step 2: 영상 50개 가져오기
     playlist_response = youtube.playlistItems().list(
@@ -64,12 +68,12 @@ def store_videos_and_snapshots(channel_id: str, videos: List[Dict]):
         duration_seconds = parse_duration_to_seconds(duration_str)
         
         video_records.append({
-            "id": vid,
+            "video_id": vid,
             "channel_id": channel_id,
             "title": snippet.get("title"),
             "published_at": snippet.get("publishedAt"),
             "is_short": duration_seconds <= 140,  # 140초 이하이면 Shorts
-            "thumbnail_url": snippet.get("thumbnails", {}).get("default", {}).get("url")
+            "thumbnail_url": snippet.get("thumbnails", {}).get("high", {}).get("url")
         })
 
         snapshot_records.append({
@@ -82,7 +86,7 @@ def store_videos_and_snapshots(channel_id: str, videos: List[Dict]):
 
     try:
         # 영상 업서트
-        supabase.table("videos").upsert(video_records, on_conflict=["id"]).execute()
+        supabase.table("videos").upsert(video_records, on_conflict=["video_id"]).execute()
 
         # snapshot 저장
         supabase.table("video_snapshots").insert(snapshot_records).execute()
