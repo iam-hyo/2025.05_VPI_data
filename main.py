@@ -3,6 +3,13 @@
 from youtube.channel_initializer import fetch_channel_admin_list, initialize_channels_from_admins
 from youtube.youtube_channel_collector import get_channel_ids_from_supabase, fetch_and_store_channel_data
 from youtube.youtube_video_collector import fetch_videos_from_channel, store_videos_and_snapshots
+from supabase import create_client, Client
+import os
+
+# Supabase 설정
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 
 if __name__ == "__main__":
     admins = fetch_channel_admin_list()
@@ -17,4 +24,16 @@ if __name__ == "__main__":
     # 각 채널 ID에 대해 영상을 수집하고 Supabase에 저장합니다.
     for channel_id in test_channel_ids:
         videos = fetch_videos_from_channel(channel_id)
-        store_videos_and_snapshots(channel_id, videos)
+        video_records, snapshot_records = store_videos_and_snapshots(channel_id, videos)
+
+        try:
+            # 영상 업서트
+            supabase.table("videos").upsert(video_records, on_conflict=["video_id"]).execute()
+
+            # snapshot 저장
+            supabase.table("video_snapshots").insert(snapshot_records).execute()
+
+        except Exception as e:
+            print(f"[❌] 채널 수집 실패 (건너뜀): {channel_id}")
+            print(f"[ERROR] {e}")
+            continue  # 👉 다음 채널로 넘어가기

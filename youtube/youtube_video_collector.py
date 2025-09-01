@@ -27,7 +27,7 @@ def fetch_videos_from_channel(channel_id: str) -> List[Dict]:
         uploads_playlist_id = channel_response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
     else:
         print(f"[❌] 채널 정보를 찾을 수 없습니다: {channel_id}")
-    return []
+        return []
 
     # Step 2: 영상 50개 가져오기
     playlist_response = youtube.playlistItems().list(
@@ -83,14 +83,7 @@ def store_videos_and_snapshots(channel_id: str, videos: List[Dict]):
             "like_count": int(stats.get("likeCount", 0)),
             "comment_count": int(stats.get("commentCount", 0))
         })
-
-    try:
-        # 영상 업서트
-        supabase.table("videos").upsert(video_records, on_conflict=["video_id"]).execute()
-
-        # snapshot 저장
-        supabase.table("video_snapshots").insert(snapshot_records).execute()
-
-    except Exception as e:
-        print("🚨 영상 또는 snapshot 저장 실패! 전체 작업 중단")
-        raise e
+        
+    return video_records, snapshot_records
+    
+   
