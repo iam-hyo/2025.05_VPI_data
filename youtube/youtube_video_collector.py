@@ -2,7 +2,7 @@
 
 import os
 import isodate
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from typing import List, Dict
 from youtube.api_key import build_youtube_with_fallback
 
@@ -55,7 +55,9 @@ def parse_duration_to_seconds(duration_str: str) -> int:
         return 0
 
 def store_videos_and_snapshots(channel_id: str, videos: List[Dict]):
-    collected_at = datetime.utcnow().isoformat()
+    KST = timezone(timedelta(hours=9))
+    collected_at = datetime.now(KST).isoformat()
+    
     video_records = []
     snapshot_records = []
 
@@ -64,14 +66,22 @@ def store_videos_and_snapshots(channel_id: str, videos: List[Dict]):
         snippet = video["snippet"]
         stats = video.get("statistics", {})
         content_details = video.get("contentDetails", {})
+        
+        # 1. 영상 길이(duration)를 ISO 8601 문자열 -> 초 단위 정수(int)로 변환
         duration_str = content_details.get("duration", "")
         duration_seconds = parse_duration_to_seconds(duration_str)
+        
+        # 2. 카테고리 ID를 문자열 -> 정수(int)로 변환
+        category_id_str = snippet.get("categoryId")
+        category_id = int(category_id_str) if category_id_str and category_id_str.isdigit() else None
         
         video_records.append({
             "video_id": vid,
             "channel_id": channel_id,
             "title": snippet.get("title"),
             "published_at": snippet.get("publishedAt"),
+            "video_length": duration_seconds, 
+            "category_id": category_id,       
             "is_short": duration_seconds <= 140,  # 140초 이하이면 Shorts
             "thumbnail_url": snippet.get("thumbnails", {}).get("high", {}).get("url")
         })
